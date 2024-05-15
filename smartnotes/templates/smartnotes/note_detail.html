@@ -1,0 +1,14 @@
+{% extends "smartnotes/_base.html" %}
+
+{% block title %}Note Detail{% endblock %}
+
+{% block content %}
+<h1 class="text-center py-5">Note Detail</h1>
+<section class="container mx-auto">
+    <p><strong>Title:</strong> {{ note.title }}</p>
+    <p><strong>Content:</strong> {{ note.content }}</p>
+    <p><a class="btn btn-primary" href="{% url 'smartnotes:notes' %}">Back to Notes</a></p>
+    <p><a class="btn btn-primary" href="{% url 'smartnotes:note_edit' note.id %}">Edit Note</a></p>
+    <p><a class="btn btn-danger" href="{% url 'smartnotes:note_delete' note.id %}">Delete Note</a></p>
+</section>
+{% endblock %}

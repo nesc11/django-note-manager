@@ -1,0 +1,30 @@
+{% extends "smartnotes/_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h1 class="text-center py-5">Login</h1>
+<section class="mx-auto" style="width: 90%; max-width: 400px;">
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+    {% endif %}
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p class="text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </p>
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+
+    <p><a href="{% url 'password_reset' %}">Forgotten your password?</a></p>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a>.</p>
+</section>
+{% endblock %}

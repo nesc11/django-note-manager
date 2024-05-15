@@ -1,0 +1,9 @@
+{% extends "smartnotes/_base.html" %}
+
+{% block content %}
+<h1 class="text-center py-5">Welcome to SmartNotes</h1>
+
+<p class="text-center">This is a simple notes app that allows you to keep track of your notes.</p>
+
+<p class="text-center"><a href="{% url 'smartnotes:notes' %}">View your notes</a></p>
+{% endblock %}

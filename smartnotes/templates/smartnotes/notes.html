@@ -1,0 +1,20 @@
+{% extends "smartnotes/_base.html" %}
+
+{% block title %}My Notes{% endblock %}
+
+{% block content %}
+<h1 class="text-center py-5">My Notes</h1>
+<section class="container mx-auto d-flex flex-wrap gap-3 justify-content-center align-items-center">
+    {% for note in notes %}
+    <div class="border p-2">
+        <p><a href="{% url 'smartnotes:note_detail' note.id %}">{{ note.title }}</a></p>
+        <p>{{ note.content|truncatechars:30 }}</p>
+    </div>
+    {% empty %}
+    <p>You don't have any notes yet.</p>
+    {% endfor %}
+</section>
+
+<p class="text-center py-5"><a href="{% url 'smartnotes:note_create' %}" class="btn btn-primary">Create a new note</a>
+</p>
+{% endblock %}

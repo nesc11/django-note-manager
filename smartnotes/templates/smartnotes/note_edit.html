@@ -1,0 +1,17 @@
+{% extends "smartnotes/_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Note{% endblock %}
+
+{% block content %}
+<h1 class="text-center py-5">Edit Note</h1>
+<section class="mx-auto" style="width: 90%; max-width: 400px;">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary" type="submit">Update</button>
+        <a class="btn btn-secondary" href="{% url 'smartnotes:note_detail' note.id %}">Cancel</a>
+    </form>
+</section>
+{% endblock %}
